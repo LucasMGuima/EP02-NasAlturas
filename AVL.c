@@ -2,17 +2,29 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int main(){
-    AVL avl = avlCriarNo(1);
-    avlAddElemento(avlCriarNo(2), avl);
-    avlAddElemento(avlCriarNo(3), avl);
-    printf(">%d",avlCalculaFatorBalanceamento(avl));
+//Utilitarios
+#pragma region
+int max(int num1, int num2){
+    if(num1 >= num2) return num1;
+    if(num1 < num2) return num2;
 }
+#pragma endregion
 
+/*
+int main(){
+    int val[] = {10, 20, 30, 5, 0, 33};
+    int len = 6;
+    AVL avl = avlCriarNo(val[0]);
+    for(int i = 1; i < len; i++){
+        avl = avlAddElemento(avlCriarNo(val[i]), avl);
+    }
+    avlIdentImprime(avl, 0);
+}
+*/
 AVL avlAddElemento(AVL No, AVL Raiz){
     if(Raiz == NULL){
         Raiz = No;
-        return;
+        return Raiz;
     }
     if(Raiz->valor > No->valor){
         //adiciona ao filho esquerdo se o elemento for menor
@@ -25,16 +37,32 @@ AVL avlAddElemento(AVL No, AVL Raiz){
     Raiz->h = avlCalculaAltura(Raiz);
 
     //Rebalancear a arvorre se for preciso
-
+    if(avlCalculaFatorBalanceamento(Raiz) == -2){
+        if(avlCalculaFatorBalanceamento(Raiz->filhoDir) == +1){
+            Raiz->filhoDir = avlRotacionaDireita(Raiz->filhoDir);
+        }
+        Raiz = avlRotacionaEsquerda(Raiz);
+    }else if(avlCalculaFatorBalanceamento(Raiz) == +2){
+        if(avlCalculaFatorBalanceamento(Raiz->filhoEsq) == -1){
+            Raiz->filhoEsq = avlRotacionaEsquerda(Raiz->filhoEsq);
+        }
+        Raiz = avlRotacionaDireita(Raiz);
+    }
     return Raiz;
 }
 
-AVL avlRotacionaDireita(AVL No, AVL Raiz){
-
+AVL avlRotacionaDireita(AVL Raiz){
+    AVL novaRaiz = Raiz->filhoEsq;
+    Raiz->filhoEsq = novaRaiz->filhoDir;
+    novaRaiz->filhoDir = Raiz;
+    return novaRaiz;
 }
 
-AVL avlRotacionaEsquerda(AVL No, AVL Raiz){
-    
+AVL avlRotacionaEsquerda(AVL Raiz){
+    AVL novaRaiz = Raiz->filhoDir;
+    Raiz->filhoDir = novaRaiz->filhoEsq;
+    novaRaiz->filhoEsq = Raiz;
+    return novaRaiz;
 }
 
 AVL avlCriarNo(int Num){
@@ -92,13 +120,3 @@ int avlCalculaAltura(AVL No){
 int avlCalculaFatorBalanceamento(AVL No){
     return avlCalculaAltura(No->filhoEsq) - avlCalculaAltura(No->filhoDir);
 }
-
-//Utilitarios
-#pragma region
-int max(int num1, int num2){
-    if(num1 == NULL) num1 = 0;
-    if(num2 == NULL) num2 = 0;
-    if(num1 >= num2) return num1;
-    if(num1 < num2) return num2;
-}
-#pragma endregion

@@ -1,24 +1,56 @@
-#include "BST.h"
-#include "AVL.h"
+#include "BST.c"
+#include "AVL.c"
+#include "NasAlturas.h"
+
 #include <stdio.h>
+#include <stdlib.h>
 
 int main(){
-    BST bst = bstCriarNo(4);
-    bstAddElemento(bstCriarNo(2),bst);
-    bstAddElemento(bstCriarNo(7),bst);
-    bstAddElemento(bstCriarNo(1),bst);
-    bstAddElemento(bstCriarNo(3),bst);
-    bstAddElemento(bstCriarNo(5),bst);
-    bstAddElemento(bstCriarNo(9),bst);
-    bstAddElemento(bstCriarNo(6),bst);
-    bstAddElemento(bstCriarNo(8),bst);
-    bstAddElemento(bstCriarNo(10),bst);
+    time_t hora;
+    srand((unsigned) time(&hora));
 
-    bstPreOrdem(bst);
-    printf("\n");
-    bstInOrdem(bst);
-    printf("\n");
-    bstPosOrdem(bst);
-    printf("\n");
-    bstIdentImprime(bst, 1);
+    int amostras = 2;
+    int qtdNos = 6;
+    int arrValores[qtdNos];
+    popularVetor(arrValores, qtdNos);
+    printf("Array: ");
+    imprimeVetor(arrValores, qtdNos);
+    printf("\n----------------------------------\n");
+
+    printf("AVL: \n");
+    AVL avl = criarAVL(arrValores, qtdNos);
+    avlIdentImprime(avl, 0);
+    
+    printf("\nBST: \n");
+    BST bst = criarBST(arrValores, qtdNos);
+    bstIdentImprime(bst, 0);
+    
+}
+
+AVL criarAVL(int * valores, int quantidade){
+    AVL avl = avlCriarNo(valores[0]);
+    for(int i = 1; i < quantidade; i++){
+        avl = avlAddElemento(avlCriarNo(valores[i]), avl);
+    }
+    return avl;
+}
+
+BST criarBST(int * valores, int quantidade){
+    BST bst = bstCriarNo(valores[0]);
+    for(int i = 1; i < quantidade; i++){
+        bstAddElemento(bstCriarNo(valores[i]),bst);
+    }
+    return bst;
+}
+
+void popularVetor(int * vetor, int tamanho){
+    for(int i = 0; i < tamanho; i++){
+        vetor[i] = rand() % 100; //gera um numero aleatório entre 0 e 100
+    }
+}
+
+void imprimeVetor(int * vetor, int tamanho){
+    for(int i = 0; i < tamanho; i++){
+        printf(">%d ",vetor[i]);
+    }
 }

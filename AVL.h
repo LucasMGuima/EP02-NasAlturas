@@ -1,13 +1,13 @@
 #ifndef AVL_DOT_H
 #define AVL_DOT_H
 
-typedef struct no{
+typedef struct celula{
     int valor;
     int h;
-    struct no * filhoEsq;
-    struct no * filhoDir;
-}No;
-typedef No* AVL;
+    struct celula * filhoEsq;
+    struct celula * filhoDir;
+}Celula;
+typedef Celula* AVL;
 
 /*
     @brief Adiciona um elemento na arvore
@@ -25,16 +25,16 @@ AVL avlCriarNo(int Num);
     @brief Rotaciona o elemento da arvore para a esquerda
     @param No Elemento a ser rotacionado
     @param Raiz Arvore que possui o elemento
-    @return Nova arvore
+    @return Nova Raiz da nova sub-arvore
 */
-AVL avlRotacionaEsquerda(AVL No, AVL Raiz);
+AVL avlRotacionaEsquerda(AVL Raiz);
 /*
     @brief Rotaciona o elemento da arvore para a direira
     @param No Elemento a ser rotacionado
     @param Raiz Arvore que possui o elemento
-    @return Nova arvore
+    @return Nova Raiz da nova sub-arvore
 */
-AVL avlRotacionaDireita(AVL No, AVL Raiz);
+AVL avlRotacionaDireita(AVL Raiz);
 /*
     @brief Imprime a arvore seguindo a logica de PreOrdem
     @param Raiz Elemento que representa a arvore a ser impressa
