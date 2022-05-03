@@ -28,5 +28,45 @@ AVL avlCriarNo(int Num);
     @return Nova arvore
 */
 AVL avlRotacionaEsquerda(AVL No, AVL Raiz);
+/*
+    @brief Rotaciona o elemento da arvore para a direira
+    @param No Elemento a ser rotacionado
+    @param Raiz Arvore que possui o elemento
+    @return Nova arvore
+*/
+AVL avlRotacionaDireita(AVL No, AVL Raiz);
+/*
+    @brief Imprime a arvore seguindo a logica de PreOrdem
+    @param Raiz Elemento que representa a arvore a ser impressa
+*/
+void avlPreOrdem(AVL Raiz);
+/*
+    @brief Imprime a arvore seguindo a logica de InOrdem
+    @para Raiz Elemento que representa a arvore a ser impressa
+*/
+void avlInOrdem(AVL Raiz);
+/*
+    @brief Imprime a arvore seguindo a logica de PosOrdem
+    @para Raiz Elemento que representa a arvore a ser impressa
+*/
+void avlPosOrdem(AVL RAiz);
+/*
+    @brief Imprime a arvore seguindo a logica de InOrdem "desenhando" uma arvore
+    @param Raiz Elemento que representa a arvore a ser impressa
+    @param espac Quantidade de espaço a ser dado
+*/
+void avlIdentImprime(AVL Raiz, int espaco);
+/*
+    @brief Calcula o fator de balanceamento do No entrado
+    @param No no a ser recalculado o FB
+    @return Retona o FB calculado
+*/
+int avlCalculaFatorBalanceamento(AVL No);
+/*
+    @brief Calcula a altura do No
+    @param No no a ser calculado a altura
+*/
+int avlCalculaAltura(AVL No);
+
 
 #endif

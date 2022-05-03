@@ -1,4 +1,5 @@
 #include "BST.h"
+#include "AVL.h"
 #include <stdio.h>
 
 int main(){
