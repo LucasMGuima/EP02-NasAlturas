@@ -4,23 +4,12 @@
 
 //Utilitarios
 #pragma region
-int max(int num1, int num2){
+int avlMax(int num1, int num2){
     if(num1 >= num2) return num1;
     if(num1 < num2) return num2;
 }
 #pragma endregion
 
-/*
-int main(){
-    int val[] = {10, 20, 30, 5, 0, 33};
-    int len = 6;
-    AVL avl = avlCriarNo(val[0]);
-    for(int i = 1; i < len; i++){
-        avl = avlAddElemento(avlCriarNo(val[i]), avl);
-    }
-    avlIdentImprime(avl, 0);
-}
-*/
 AVL avlAddElemento(AVL No, AVL Raiz){
     if(Raiz == NULL){
         Raiz = No;
@@ -114,7 +103,7 @@ int avlCalculaAltura(AVL No){
         return 0;
     }
 
-    return max(avlCalculaAltura(No->filhoEsq), avlCalculaAltura(No->filhoDir))+1;
+    return avlMax(avlCalculaAltura(No->filhoEsq), avlCalculaAltura(No->filhoDir))+1;
 }
 
 int avlCalculaFatorBalanceamento(AVL No){

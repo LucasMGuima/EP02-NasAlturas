@@ -2,6 +2,14 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+//Utilitarios
+#pragma region
+int max(int num1, int num2){
+    if(num1 >= num2) return num1;
+    if(num1 < num2) return num2;
+}
+#pragma endregion
+
 /*
     @brief  Função que acrescente um novo elemento na BST
     @param  No Novo elemento a ser adicionado na arvore
@@ -19,6 +27,9 @@ BST bstAddElemento(BST No, BST Raiz){
         //adiciona ao filho direito
         Raiz->filhoDir = bstAddElemento(No, Raiz->filhoDir);
     }
+    //atualiza a altura do no
+    Raiz->h = bstCalculaAltura(Raiz);
+    
     return Raiz;
 }
 
@@ -30,6 +41,7 @@ BST bstAddElemento(BST No, BST Raiz){
 BST bstCriarNo(int Num){
     BST aux = (BST)malloc(sizeof(BST));
     aux->valor = Num;
+    aux->h = 0;
     aux->filhoDir = NULL;
     aux->filhoEsq = NULL;
 }
@@ -119,4 +131,12 @@ void bstIdentImprime(BST Raiz, int espaco){
         printf("%d\n",Raiz->valor);
         bstIdentImprime(Raiz->filhoEsq, espaco + 1);
     }
+}
+
+int bstCalculaAltura(BST No){
+    if(No == NULL){
+        return 0;
+    }
+
+    return max(bstCalculaAltura(No->filhoEsq), bstCalculaAltura(No->filhoDir))+1;
 }
