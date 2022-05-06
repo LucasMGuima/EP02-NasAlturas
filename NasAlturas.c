@@ -14,7 +14,9 @@ void simulacao(){
     int amostras;
     int qtdNos;
     int somaTamanhoBST = 0;
+    float tempoTotalBST = 0;
     int somaTamanhoAVL = 0;
+    float tempoTotalAVl = 0;
 
     printf("Emtre com a qunatidade de amostras: ");
     scanf("%d", &amostras);
@@ -28,7 +30,9 @@ void simulacao(){
         //Atribui novos valores ao array
         popularVetor(arrValores, qtdNos);
         //Cria as arvores com os novos valores
+        
         AVL avl = criarAVL(arrValores, qtdNos);
+
         BST bst = criarBST(arrValores, qtdNos);
 
         //soma a altura da BST criada ao total de altura da BST
@@ -37,14 +41,14 @@ void simulacao(){
         somaTamanhoAVL += avl->h;
         cont += 1;
     }
-    //CORRIGIR VIRGULA 
-    int alturaMediaAVl = somaTamanhoAVL / amostras;
-    int alturaMediaBST = somaTamanhoBST / amostras;
-    int alturaMediaGeral = (alturaMediaAVl + alturaMediaBST) / amostras;
 
-    printf("Altura media geral: %d \n", alturaMediaGeral);
-    printf("Altura media da BST comum: %d \n", alturaMediaBST);
-    printf("Altura media da AVL: %d \n", alturaMediaAVl);
+    float alturaMediaAVl = somaTamanhoAVL / amostras;
+    float alturaMediaBST = somaTamanhoBST / amostras;
+    float alturaMediaGeral = (alturaMediaAVl + alturaMediaBST) / amostras;
+
+    printf("Altura media geral: %.2f \n", alturaMediaGeral);
+    printf("Altura media da BST comum: %.2f \n", alturaMediaBST);
+    printf("Altura media da AVL: %.2f \n", alturaMediaAVl);
     separador();
 }
 
@@ -80,7 +84,7 @@ void menu(){
 int main(){
     //Pega uma nova seed para gerar os numeros aleatorios
     time_t hora;
-    srand((unsigned) time(&hora));
+    srand(time(&hora));
 
     //Chama o menu que "controla" o fluxo do programa
     menu();
