@@ -11,10 +11,10 @@
 ### Funções principais
 
 - BST
-  bstCalculaAltura(BST No) -> Função que recebe um nó e recalcula sua altura, utilizada sempre que ocorre uma inserção de nó na BST. Criada para facilitar o calculo da altura da BST na execução do projeto.
+  - bstCalculaAltura(BST No) -> Função que recebe um nó e recalcula sua altura, utilizada sempre que ocorre uma inserção de nó na BST. Criada para facilitar o calculo da altura da BST na execução do projeto.
 - NasAlturas
-  criarBST(int * valores, int quantidade)/criarAVL(int * valores, int quantidade) -> Ambas as função criam as respectivas arvores já adicionando os elementos enviados como valores. Foram feitas com o intuito de facilitar correções e deixar o código mais limpo.
-  void popularVetor(int * vetor, int tamanho) -> Responsável por gerar os valores que serão adicionados as BSTs, guardando em um vetor de inteiros.
+  - criarBST(int * valores, int quantidade)/criarAVL(int * valores, int quantidade) -> Ambas as função criam as respectivas arvores já adicionando os elementos enviados como valores. Foram feitas com o intuito de facilitar correções e deixar o código mais limpo.
+  - void popularVetor(int * vetor, int tamanho) -> Responsável por gerar os valores que serão adicionados as BSTs, guardando em um vetor de inteiros.
 
 ### Geração dos Elementos
 
