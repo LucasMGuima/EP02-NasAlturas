@@ -23,4 +23,16 @@
   Para corrigir esse problema que a time entra em uso, ao se passar para a função srand() o tempo atual do computador (contando com os milissegundos) se gera uma seed diferente em cada interação do programa, essa que é usada para a geração dos valores no rand().
   Assim fazendo conque sempre que se chama a função de popular o vetor a sequencia dos valores gerados sera diferente.
 
+```c
+  void popularVetor(int * vetor, int tamanho){
+    //Pega uma nova seed para gerar os numeros aleatorios
+    time_t hora;
+    srand(time(&hora));
+
+    for(int i = 0; i < tamanho; i++){
+        vetor[i] = rand() % 100; //gera um numero aleatório entre 0 e 100
+    }
+}
+```
+
 ## Interpretação
