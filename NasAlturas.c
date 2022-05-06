@@ -11,12 +11,14 @@ void separador(){
 }
 
 void simulacao(){
+    clock_t timer;
+
     int amostras;
     int qtdNos;
     int somaTamanhoBST = 0;
     float tempoTotalBST = 0;
     int somaTamanhoAVL = 0;
-    float tempoTotalAVl = 0;
+    float tempoTotalAVL = 0;
 
     printf("Emtre com a qunatidade de amostras: ");
     scanf("%d", &amostras);
@@ -29,11 +31,17 @@ void simulacao(){
     while(cont < amostras){
         //Atribui novos valores ao array
         popularVetor(arrValores, qtdNos);
-        //Cria as arvores com os novos valores
         
+        //Cria as arvores com os novos valores
+        timer = clock(); //"inicia" o timer
         AVL avl = criarAVL(arrValores, qtdNos);
+        timer = clock() - timer; //"termina" o timer
+        tempoTotalAVL += ((float)timer)/CLOCKS_PER_SEC; //calcula o tempo passado em segundos
 
+        timer = clock(); //"inicia" o timer
         BST bst = criarBST(arrValores, qtdNos);
+        timer = clock() - timer; //"termina" o timer
+        tempoTotalBST += ((float)timer)/CLOCKS_PER_SEC; //calcula o tempo passado em segundos
 
         //soma a altura da BST criada ao total de altura da BST
         somaTamanhoBST += bst->h;
@@ -42,13 +50,23 @@ void simulacao(){
         cont += 1;
     }
 
-    float alturaMediaAVl = somaTamanhoAVL / amostras;
+    float alturaMediaAVL = somaTamanhoAVL / amostras;
+    float tempoMedioAVL = tempoTotalAVL / amostras;
+
     float alturaMediaBST = somaTamanhoBST / amostras;
-    float alturaMediaGeral = (alturaMediaAVl + alturaMediaBST) / amostras;
+    float tempoMedioBST = tempoTotalBST / amostras;
+
+    float alturaMediaGeral = (alturaMediaAVL + alturaMediaBST) / amostras;
+    float tempoMedioGeral = (tempoMedioAVL + tempoMedioBST) / amostras;
 
     printf("Altura media geral: %.2f \n", alturaMediaGeral);
+    printf("Tempo medio de construcao geral: %f segundos.\n", tempoMedioGeral);
+    printf("--- \n");
     printf("Altura media da BST comum: %.2f \n", alturaMediaBST);
-    printf("Altura media da AVL: %.2f \n", alturaMediaAVl);
+    printf("Tempo medio de construcao BST: %f segundos.\n", tempoMedioBST);
+    printf("--- \n");
+    printf("Altura media da AVL: %.2f \n", alturaMediaAVL);
+    printf("Tempo medio de construcao AVL: %f segundos.\n", tempoMedioAVL);
     separador();
 }
 
