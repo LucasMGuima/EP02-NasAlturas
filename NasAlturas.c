@@ -56,8 +56,8 @@ void simulacao(){
     float alturaMediaBST = somaTamanhoBST / amostras;
     float tempoMedioBST = tempoTotalBST / amostras;
 
-    float alturaMediaGeral = (alturaMediaAVL + alturaMediaBST) / amostras;
-    float tempoMedioGeral = (tempoMedioAVL + tempoMedioBST) / amostras;
+    float alturaMediaGeral = (alturaMediaAVL + alturaMediaBST) / 2;
+    float tempoMedioGeral = (tempoMedioAVL + tempoMedioBST) / 2;
 
     printf("Altura media geral: %.2f \n", alturaMediaGeral);
     printf("Tempo medio de construcao geral: %f segundos.\n", tempoMedioGeral);
@@ -78,6 +78,7 @@ void menu(){
         printf("Menu: \n");
         printf("1) Nova simulacao. \n");
         printf("2) Sair. \n");
+        printf("> ");
 
         scanf("%d", &op);
 

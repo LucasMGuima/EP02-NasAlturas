@@ -10,11 +10,6 @@ int max(int num1, int num2){
 }
 #pragma endregion
 
-/*
-    @brief  Função que acrescente um novo elemento na BST
-    @param  No Novo elemento a ser adicionado na arvore
-    @param  Raiz Elemento que representa a arvore a ser incerido o elemento
-*/
 BST bstAddElemento(BST No, BST Raiz){
     if(Raiz == NULL){
         Raiz = No;
@@ -33,11 +28,6 @@ BST bstAddElemento(BST No, BST Raiz){
     return Raiz;
 }
 
-/*
-    @brief Função que cria um novo no com o valor entrado
-    @param num valor a ser atrbuido ao novo no
-    @return O novo no criado
-*/
 BST bstCriarNo(int Num){
     BST aux = (BST)malloc(sizeof(BST));
     aux->valor = Num;
@@ -46,12 +36,7 @@ BST bstCriarNo(int Num){
     aux->filhoEsq = NULL;
 }
 
-/*
-    @brief Busca um elemento especificado na arvore BST
-    @param raiz Elemento que representa a arvore a se buscar
-    @param n Elemento a se buscar na arvore
-    @return NULL se não encontro ou o No desse elemento se o encontrol
-*/
+
 BST bstBusca(BST Raiz, int N){
     if(Raiz->valor == N || Raiz == NULL){
         return Raiz;
@@ -64,11 +49,6 @@ BST bstBusca(BST Raiz, int N){
     }
 }
 
-/*
-    @brief Procura pelo menor elementos incerido na arvore
-    @param Raiz Elemento que representa a arvore a ser usada
-    @return Retorna o menor elemento da arvore
-*/
 BST bstMinimo(BST Raiz){
     if(Raiz->filhoEsq == NULL){
         return Raiz;
@@ -77,11 +57,6 @@ BST bstMinimo(BST Raiz){
     return bstMinimo(Raiz->filhoEsq);
 }
 
-/*
-    @brief Procura pelo maior elementos incerido na arvore
-    @param Raiz Elemento que representa a arvore a ser usada
-    @return Retorna o menor elemento da arvore
-*/
 BST bstMaximo(BST Raiz){
     if(Raiz->filhoDir == NULL){
         return Raiz;
@@ -90,10 +65,6 @@ BST bstMaximo(BST Raiz){
     return bstMaximo(Raiz->filhoDir);
 }
 
-/*
-    @brief Imprime a arvore seguindo a logica de PreOrdem
-    @param Raiz Elemento que representa a arvore a ser impressa
-*/
 void bstPreOrdem(BST Raiz){
     if(Raiz != NULL){
         printf("%d ", Raiz->valor);
@@ -102,10 +73,6 @@ void bstPreOrdem(BST Raiz){
     }
 }
 
-/*
-    @brief Imprime a arvore seguindo a logica de InOrdem
-    @para Raiz Elemento que representa a arvore a ser impressa
-*/
 void bstInOrdem(BST Raiz){
     if(Raiz != NULL){
         bstInOrdem(Raiz->filhoEsq);
