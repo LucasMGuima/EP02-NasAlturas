@@ -31,7 +31,7 @@ void simulacao(){
     while(cont < amostras){
         //Atribui novos valores ao array
         popularVetor(arrValores, qtdNos);
-        
+
         //Cria as arvores com os novos valores
         timer = clock(); //"inicia" o timer
         AVL avl = criarAVL(arrValores, qtdNos);
@@ -101,6 +101,10 @@ void menu(){
 }
 
 int main(){
+    //Pega uma nova seed para gerar os numeros aleatorios
+    time_t hora;
+    srand((unsigned)time(&hora));
+
     //Chama o menu que "controla" o fluxo do programa
     menu();
 }
@@ -122,12 +126,9 @@ BST criarBST(int * valores, int quantidade){
 }
 
 void popularVetor(int * vetor, int tamanho){
-    //Pega uma nova seed para gerar os numeros aleatorios
-    time_t hora;
-    srand(time(&hora));
-
     for(int i = 0; i < tamanho; i++){
-        vetor[i] = rand() % 100; //gera um numero aleatório entre 0 e 100
+        int num = rand() % 100; //gera um numero aleatório entre 0 e 100; 
+        vetor[i] = num; 
     }
 }
 
