@@ -36,3 +36,21 @@
 ```
 
 ## Interpretação
+
+  A partir dos testes gerados com o programa, é possível se observar que uma BST comum tente a variar bastante em sua altura dependendo da ordem que seus elementos são inseridos. Já uma BST AVL mantém uma altura controlada já que possui a capacidade de ser ajustar conforme se adiciona elementos nesta arvore.
+  Mesmo a AVL levando um tempo maior para se adicionar um elemento, quando se for fazer uma busca pelo fator de manter uma altura "baixa" se torna uma atividade mais rápida.
+  Podemos analisar a variação de tamanho e de tempo com o resultado do teste de 300 arvores com 600 elementos cada:
+
+  ```cmd
+  Experimento com A = 300 e N = 600
+  --------------------------------------
+  Altura media geral: 16.50 
+  Tempo medio de construcao geral: 0.004887 segundos.
+  ---
+  Altura media da BST comum: 22.00
+  Tempo medio de construcao BST: 0.003080 segundos.
+  ---
+  Altura media da AVL: 11.00
+  Tempo medio de construcao AVL: 0.006693 segundos.
+  --------------------------------------
+```
